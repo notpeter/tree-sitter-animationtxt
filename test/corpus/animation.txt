@@ -9,21 +9,21 @@ introFrames = 1, 2x2, 3, 4x2
 ---
 (animationtxt
   (loopCount
-    (integer)
+    (positiveInt)
     (newline))
   (frames
     (framelist
-        (frameLiteral)
-        (frameLiteral)
-        (frameLiteral)
-        (frameLiteral)
-        (frameLiteral)
-        (frameLiteral))
+    (frameNonRepeat)
+    (frameNonRepeat)
+    (frameRepeat)
+    (frameRepeat)
+    (frameNonRepeat)
+    (frameNonRepeat))
   (newline))
   (introFrames
   (framelist
-    (frameLiteral)
-    (frameLiteral)
-    (frameLiteral)
-    (frameLiteral))
+  (frameNonRepeat)
+  (frameRepeat)
+  (frameNonRepeat)
+  (frameRepeat))
     (newline)))
