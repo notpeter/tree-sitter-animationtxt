@@ -2,17 +2,47 @@
   "name": "tree-sitter-playdate-animation",
   "version": "1.0.0",
   "main": "grammar.js",
+  "types": "bindings/node",
   "dependencies": {
-    "nan": "^2.20.0"
+    "node-addon-api": "^7.1.0",
+    "node-gyp-build": "^4.8.0"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.21.0"
+  },
+  "peerDependenciesMeta": {
+    "tree_sitter": {
+      "optional": true
+    }
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tree-sitter test",
+    "install": "node-gyp-build",
+    "prebuildify": "prebuildify --napi --strip"
   },
   "keywords": [],
+  "files": [
+    "grammar.js",
+    "binding.gyp",
+    "prebuilds/**",
+    "bindings/node/*",
+    "queries/*",
+    "src/**"
+  ],
   "author": "Peter Tripp <petertripp@gmail.com>",
   "license": "MIT",
   "description": "",
   "devDependencies": {
-    "tree-sitter-cli": "^0.22.6"
-  }
+    "tree-sitter-cli": "^0.22.6",
+    "prebuildify": "^6.0.0"
+  },
+  "tree-sitter": [
+    {
+      "file-types": [
+        "animation.txt"
+      ],
+      "scope": "source.playdateanimation",
+      "injection-regex": "^animation.txt$"
+    }
+  ]
 }
