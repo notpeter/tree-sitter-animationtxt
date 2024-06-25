@@ -1,20 +1,18 @@
+/// <reference types="tree-sitter-cli/dsl" />
+
 module.exports = grammar({
-  name: "playdate-animation",
+  name: "playdateanimation",
   rules: {
     animationtxt: ($) =>
-      seq($.loopCount, $._newline, $.frames, $._newline, $.introFrames),
-    loopCount: ($) => seq("loopCount", "=", $._integer),
-    frames: ($) => seq("frames", "=", $._frameId, repeat(seq(",", $._frameId))),
+      seq($.loopCount, $.newline, $.frames, $.newline, $.introFrames),
+    loopCount: (_) => seq("loopCount", "=", /[0-9]+/),
+    frames: ($) => seq("frames", "=", $.frameId, repeat(seq(",", $.frameId))),
     introFrames: ($) =>
-      seq("introFrames", "=", $._frameId, repeat(seq(",", $._frameId))),
+      seq("introFrames", "=", $.frameId, repeat(seq(",", $.frameId))),
 
-    _integer: (_) => /[0-9]+/,
-    _newline: (_) => /\r?\n/,
-    _frameId: (_) =>
-      choice(
-        $._integer,
-        seq($._integer, token.immediate("x"), token.immediate($._integer)),
-      ),
+    frameId: (_) =>
+      choice(seq(/[0-9]+/, token.immediate("x"), token.immediate(/[0-9]+/))),
+    newlines: (_) => /(\r?\n)+/,
   },
   extras: (_) => [" "],
 });
