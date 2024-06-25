@@ -3,7 +3,8 @@
 module.exports = grammar({
   name: "playdateanimation",
   rules: {
-    animationtxt: ($) => repeat(choice($.loopCount, $.frames, $.introFrames)),
+    animationtxt: ($) =>
+      repeat(choice(/(\r?\n)/, $.loopCount, $.frames, $.introFrames)),
     loopCount: ($) =>
       seq(
         "loopCount",
@@ -12,7 +13,7 @@ module.exports = grammar({
         optional(/ +/),
         $.positiveInt,
         optional(/ +/),
-        $.newline,
+        /(\r?\n)/,
       ),
     frames: ($) =>
       seq(
@@ -22,7 +23,7 @@ module.exports = grammar({
         optional(/ +/),
         $.framelist,
         optional(/ +/),
-        $.newline,
+        /(\r?\n)/,
       ),
     introFrames: ($) =>
       seq(
@@ -32,7 +33,7 @@ module.exports = grammar({
         optional(/ +/),
         $.framelist,
         optional(/ +/),
-        $.newline,
+        /(\r?\n)/,
       ),
     framelist: ($) =>
       seq(
@@ -52,8 +53,6 @@ module.exports = grammar({
       );
     },
     positiveInt: (_) => /[1-9][0-9]*/,
-    newline: (_) => /(\r?\n)/,
-    w: (_) => / +/,
   },
   extras: (_) => [],
 });

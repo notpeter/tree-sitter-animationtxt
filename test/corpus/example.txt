@@ -1,6 +1,6 @@
 # test/corpus/animation.txt
 ==================
-Animation.txt
+animation.txt
 ==================
 loopCount = 2
 frames = 1, 2, 3x4, 4x2, 5, 5
@@ -9,8 +9,7 @@ introFrames = 1, 2x2, 3, 4x2
 ---
 (animationtxt
   (loopCount
-    (positiveInt)
-    (newline))
+    (positiveInt))
   (frames
     (framelist
     (frameNonRepeat)
@@ -18,12 +17,10 @@ introFrames = 1, 2x2, 3, 4x2
     (frameRepeat)
     (frameRepeat)
     (frameNonRepeat)
-    (frameNonRepeat))
-  (newline))
+    (frameNonRepeat)))
   (introFrames
   (framelist
   (frameNonRepeat)
   (frameRepeat)
   (frameNonRepeat)
-  (frameRepeat))
-    (newline)))
+  (frameRepeat))))
