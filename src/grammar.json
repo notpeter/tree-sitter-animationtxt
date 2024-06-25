@@ -1,0 +1,298 @@
+{
+  "name": "playdateanimation",
+  "rules": {
+    "animationtxt": {
+      "type": "REPEAT",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "(\\r?\\n)"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "loopCount"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "frames"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "introFrames"
+          }
+        ]
+      }
+    },
+    "loopCount": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "loopCount"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": " +"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": " +"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "positiveInt"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": " +"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "PATTERN",
+          "value": "(\\r?\\n)"
+        }
+      ]
+    },
+    "frames": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "frames"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": " +"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": " +"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "framelist"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": " +"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "PATTERN",
+          "value": "(\\r?\\n)"
+        }
+      ]
+    },
+    "introFrames": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "introFrames"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": " +"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": " +"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "framelist"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": " +"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "PATTERN",
+          "value": "(\\r?\\n)"
+        }
+      ]
+    },
+    "framelist": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "frameNonRepeat"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "frameRepeat"
+            }
+          ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ","
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": " +"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "frameNonRepeat"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "frameRepeat"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "frameNonRepeat": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[1-9][0-9]*"
+      }
+    },
+    "frameRepeat": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "[1-9][0-9]*"
+          },
+          {
+            "type": "IMMEDIATE_TOKEN",
+            "content": {
+              "type": "STRING",
+              "value": "x"
+            }
+          },
+          {
+            "type": "IMMEDIATE_TOKEN",
+            "content": {
+              "type": "PATTERN",
+              "value": "[1-9][0-9]*"
+            }
+          }
+        ]
+      }
+    },
+    "positiveInt": {
+      "type": "PATTERN",
+      "value": "[1-9][0-9]*"
+    }
+  },
+  "extras": [],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
+}
