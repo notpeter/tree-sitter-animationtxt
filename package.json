@@ -42,6 +42,9 @@
         "animation.txt"
       ],
       "scope": "source.playdateanimation",
+      "highlights": [
+        "queries/highlights.scm"
+      ],
       "injection-regex": "^animation.txt$"
     }
   ]

@@ -3,16 +3,24 @@
 module.exports = grammar({
   name: "playdateanimation",
   rules: {
-    animationtxt: ($) =>
-      seq($.loopCount, $.newline, $.frames, $.newline, $.introFrames),
-    loopCount: (_) => seq("loopCount", "=", /[0-9]+/),
-    frames: ($) => seq("frames", "=", $.frameId, repeat(seq(",", $.frameId))),
-    introFrames: ($) =>
-      seq("introFrames", "=", $.frameId, repeat(seq(",", $.frameId))),
-
-    frameId: (_) =>
-      choice(seq(/[0-9]+/, token.immediate("x"), token.immediate(/[0-9]+/))),
-    newlines: (_) => /(\r?\n)+/,
+    animationtxt: ($) => repeat(choice($.loopCount, $.frames, $.introFrames)),
+    loopCount: ($) => seq("loopCount", "=", $.integer, $.newline),
+    frames: ($) => seq("frames", "=", $.framelist, $.newline),
+    introFrames: ($) => seq("introFrames", "=", $.framelist, $.newline),
+    framelist: ($) => seq($.frameLiteral, repeat(seq(",", $.frameLiteral))),
+    frameLiteral: ($) => {
+      const positiveInt = /[1-9][0-9]*/;
+      const frameRepeat = seq(
+        positiveInt, // frameId
+        token.immediate("x"),
+        token.immediate(positiveInt), // frameCount
+      );
+      return token(choice(prec(1, frameRepeat), prec(2, positiveInt)));
+    },
+    frameId: ($) => $.positiveInt,
+    frameCount: ($) => $.positiveInt,
+    positiveInt: (_) => /[1-9][0-9]*/,
+    integer: (_) => /[0-9]+/,
+    newline: (_) => /(\r?\n)/,
   },
-  extras: (_) => [" "],
 });

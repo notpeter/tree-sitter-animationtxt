@@ -1,0 +1,29 @@
+# test/corpus/animation.txt
+==================
+Animation.txt
+==================
+loopCount = 2
+frames = 1, 2, 3x4, 4x2, 5, 5
+introFrames = 1, 2x2, 3, 4x2
+
+---
+(animationtxt
+  (loopCount
+    (integer)
+    (newline))
+  (frames
+    (framelist
+        (frameLiteral)
+        (frameLiteral)
+        (frameLiteral)
+        (frameLiteral)
+        (frameLiteral)
+        (frameLiteral))
+  (newline))
+  (introFrames
+  (framelist
+    (frameLiteral)
+    (frameLiteral)
+    (frameLiteral)
+    (frameLiteral))
+    (newline)))
