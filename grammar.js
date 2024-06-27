@@ -2,47 +2,29 @@
 
 module.exports = grammar({
   name: "playdateanimation",
+  extras: (_) => [],
   rules: {
-    animationtxt: ($) =>
-      repeat(choice(/(\r?\n)/, $.loopCount, $.frames, $.introFrames)),
+    document: ($) => seq(/(\r?\n)*/, repeat($.statement)),
+    statement: ($) =>
+      seq(
+        choice($.loopCount, $.frames, $.introFrames),
+        optional(/ +/),
+        choice($._eof, /(\r?\n)/),
+      ),
+    assignment: ($) => choice($.loopCount, $.frames, $.introFrames),
+
     loopCount: ($) =>
-      seq(
-        "loopCount",
-        optional(/ +/),
-        "=",
-        optional(/ +/),
-        $.positiveInt,
-        optional(/ +/),
-        /(\r?\n)/,
-      ),
+      seq("loopCount", optional(/ +/), "=", optional(/ +/), $.number),
     frames: ($) =>
-      seq(
-        "frames",
-        optional(/ +/),
-        "=",
-        optional(/ +/),
-        $.framelist,
-        optional(/ +/),
-        /(\r?\n)/,
-      ),
+      seq("frames", optional(/ +/), "=", optional(/ +/), $.framelist),
     introFrames: ($) =>
-      seq(
-        "introFrames",
-        optional(/ +/),
-        "=",
-        optional(/ +/),
-        $.framelist,
-        optional(/ +/),
-        /(\r?\n)/,
-      ),
+      seq("introFrames", optional(/ +/), "=", optional(/ +/), $.framelist),
+
     framelist: ($) =>
       seq(
-        choice($.frameNonRepeat, $.frameRepeat),
-        repeat(
-          seq(",", optional(/ +/), choice($.frameNonRepeat, $.frameRepeat)),
-        ),
+        choice($.number, $.frameRepeat),
+        repeat(seq(/ *, */, choice($.number, $.frameRepeat))),
       ),
-    frameNonRepeat: ($) => token(/[1-9][0-9]*/),
     frameRepeat: (_) => {
       return token(
         seq(
@@ -52,7 +34,8 @@ module.exports = grammar({
         ),
       );
     },
-    positiveInt: (_) => /[1-9][0-9]*/,
+    equals: ($) => seq(optional(/ +/), "=", optional(/ +/)),
+    number: (_) => /[1-9][0-9]*/, // all our numbers are positive integers
+    _eof: ($) => "\0",
   },
-  extras: (_) => [],
 });

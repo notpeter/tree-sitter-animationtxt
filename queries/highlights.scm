@@ -4,6 +4,5 @@
     "frames"
     "introFrames"
 ] @keyword
-(positiveInt) @number
-(frameNonRepeat) @number
+(number) @number
 (frameRepeat) @string

@@ -37,3 +37,7 @@ dist/
 *.wasm
 *.obj
 *.o
+
+# artifacts
+*.dSYM/
+*.dylib

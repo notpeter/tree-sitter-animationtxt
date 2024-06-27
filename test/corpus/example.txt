@@ -7,20 +7,23 @@ frames = 1, 2, 3x4, 4x2, 5, 5
 introFrames = 1, 2x2, 3, 4x2
 
 ---
-(animationtxt
-  (loopCount
-    (positiveInt))
-  (frames
-    (framelist
-    (frameNonRepeat)
-    (frameNonRepeat)
-    (frameRepeat)
-    (frameRepeat)
-    (frameNonRepeat)
-    (frameNonRepeat)))
-  (introFrames
-  (framelist
-  (frameNonRepeat)
-  (frameRepeat)
-  (frameNonRepeat)
-  (frameRepeat))))
+(document
+  (statement
+    (loopCount
+      (number)))
+  (statement
+    (frames
+      (framelist
+        (number)
+        (number)
+        (frameRepeat)
+        (frameRepeat)
+        (number)
+        (number))))
+  (statement
+    (introFrames
+      (framelist
+        (number)
+        (frameRepeat)
+        (number)
+        (frameRepeat)))))

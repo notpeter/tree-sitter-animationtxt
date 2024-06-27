@@ -1,29 +1,85 @@
 {
   "name": "playdateanimation",
   "rules": {
-    "animationtxt": {
-      "type": "REPEAT",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "PATTERN",
-            "value": "(\\r?\\n)"
-          },
-          {
+    "document": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "(\\r?\\n)*"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
             "type": "SYMBOL",
-            "name": "loopCount"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "frames"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "introFrames"
+            "name": "statement"
           }
-        ]
-      }
+        }
+      ]
+    },
+    "statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "loopCount"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "frames"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "introFrames"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": " +"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_eof"
+            },
+            {
+              "type": "PATTERN",
+              "value": "(\\r?\\n)"
+            }
+          ]
+        }
+      ]
+    },
+    "assignment": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "loopCount"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "frames"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "introFrames"
+        }
+      ]
     },
     "loopCount": {
       "type": "SEQ",
@@ -62,23 +118,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "positiveInt"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "PATTERN",
-              "value": " +"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "PATTERN",
-          "value": "(\\r?\\n)"
+          "name": "number"
         }
       ]
     },
@@ -120,22 +160,6 @@
         {
           "type": "SYMBOL",
           "name": "framelist"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "PATTERN",
-              "value": " +"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "PATTERN",
-          "value": "(\\r?\\n)"
         }
       ]
     },
@@ -177,22 +201,6 @@
         {
           "type": "SYMBOL",
           "name": "framelist"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "PATTERN",
-              "value": " +"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "PATTERN",
-          "value": "(\\r?\\n)"
         }
       ]
     },
@@ -204,7 +212,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "frameNonRepeat"
+              "name": "number"
             },
             {
               "type": "SYMBOL",
@@ -218,27 +226,15 @@
             "type": "SEQ",
             "members": [
               {
-                "type": "STRING",
-                "value": ","
-              },
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "PATTERN",
-                    "value": " +"
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
+                "type": "PATTERN",
+                "value": " *, *"
               },
               {
                 "type": "CHOICE",
                 "members": [
                   {
                     "type": "SYMBOL",
-                    "name": "frameNonRepeat"
+                    "name": "number"
                   },
                   {
                     "type": "SYMBOL",
@@ -250,13 +246,6 @@
           }
         }
       ]
-    },
-    "frameNonRepeat": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PATTERN",
-        "value": "[1-9][0-9]*"
-      }
     },
     "frameRepeat": {
       "type": "TOKEN",
@@ -284,9 +273,46 @@
         ]
       }
     },
-    "positiveInt": {
+    "equals": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": " +"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": " +"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "number": {
       "type": "PATTERN",
       "value": "[1-9][0-9]*"
+    },
+    "_eof": {
+      "type": "STRING",
+      "value": "\u0000"
     }
   },
   "extras": [],
