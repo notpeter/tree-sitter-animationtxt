@@ -1,5 +1,5 @@
 {
-  "name": "playdateanimation",
+  "name": "animationtxt",
   "rules": {
     "document": {
       "type": "SEQ",
@@ -11,60 +11,26 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SYMBOL",
-            "name": "statement"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "statement"
+              },
+              {
+                "type": "PATTERN",
+                "value": "(\\r?\\n)+"
+              },
+              {
+                "type": "STRING",
+                "value": "\u0000"
+              }
+            ]
           }
         }
       ]
     },
     "statement": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "loopCount"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "frames"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "introFrames"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "PATTERN",
-              "value": " +"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "_eof"
-            },
-            {
-              "type": "PATTERN",
-              "value": "(\\r?\\n)"
-            }
-          ]
-        }
-      ]
-    },
-    "assignment": {
       "type": "CHOICE",
       "members": [
         {
@@ -272,39 +238,6 @@
           }
         ]
       }
-    },
-    "equals": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "PATTERN",
-              "value": " +"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "STRING",
-          "value": "="
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "PATTERN",
-              "value": " +"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        }
-      ]
     },
     "number": {
       "type": "PATTERN",

@@ -1,6 +1,6 @@
 VERSION := 0.0.1
 
-LANGUAGE_NAME := tree-sitter-playdateanimation
+LANGUAGE_NAME := tree-sitter-animationtxt
 
 # repository
 SRC_DIR := src

@@ -1,6 +1,6 @@
 {
-  "name": "tree-sitter-playdate-animation",
-  "version": "1.0.0",
+  "name": "tree-sitter-animationtxt",
+  "version": "0.1.0",
   "main": "grammar.js",
   "types": "bindings/node",
   "dependencies": {
@@ -41,7 +41,7 @@
       "file-types": [
         "animation.txt"
       ],
-      "scope": "source.playdateanimation",
+      "scope": "source.animationtxt",
       "highlights": [
         "queries/highlights.scm"
       ],
