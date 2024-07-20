@@ -1,4 +1,5 @@
 /// <reference types="tree-sitter-cli/dsl" />
+// Copyright (c) Peter Tripp
 
 module.exports = grammar({
   name: "animationtxt",
