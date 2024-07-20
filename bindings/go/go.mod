@@ -1,4 +1,4 @@
-module github.com/notpeter/tree-sitter-animationtxt
+module github.com/tree-sitter/tree-sitter-animationtxt
 
 go 1.22
 

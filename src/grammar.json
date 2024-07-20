@@ -242,10 +242,6 @@
     "number": {
       "type": "PATTERN",
       "value": "[1-9][0-9]*"
-    },
-    "_eof": {
-      "type": "STRING",
-      "value": "\u0000"
     }
   },
   "extras": [],

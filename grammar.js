@@ -17,6 +17,5 @@ module.exports = grammar({
       return token(seq(/[1-9][0-9]*/, token.immediate("x"), token.immediate(/[1-9][0-9]*/)));
     },
     number: (_) => /[1-9][0-9]*/, // all our numbers are positive integers
-    _eof: ($) => "\0",
   },
 });
