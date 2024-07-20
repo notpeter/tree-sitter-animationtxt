@@ -84,7 +84,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "number"
+          "name": "integer"
         }
       ]
     },
@@ -178,7 +178,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "number"
+              "name": "integer"
             },
             {
               "type": "SYMBOL",
@@ -200,7 +200,7 @@
                 "members": [
                   {
                     "type": "SYMBOL",
-                    "name": "number"
+                    "name": "integer"
                   },
                   {
                     "type": "SYMBOL",
@@ -239,7 +239,7 @@
         ]
       }
     },
-    "number": {
+    "integer": {
       "type": "PATTERN",
       "value": "[1-9][0-9]*"
     }

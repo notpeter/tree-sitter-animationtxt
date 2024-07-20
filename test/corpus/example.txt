@@ -10,20 +10,20 @@ introFrames = 1, 2x2, 3, 4x2
 (document
   (statement
     (loopCount
-      (number)))
+      (integer)))
   (statement
     (frames
       (framelist
-        (number)
-        (number)
+        (integer)
+        (integer)
         (frameRepeat)
         (frameRepeat)
-        (number)
-        (number))))
+        (integer)
+        (integer))))
   (statement
     (introFrames
       (framelist
-        (number)
+        (integer)
         (frameRepeat)
-        (number)
+        (integer)
         (frameRepeat)))))

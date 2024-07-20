@@ -3,7 +3,7 @@ set -e
 
 rm -rf bindings/ src/ .build/
 rm -rf *.dylib.dSYM *.gyp *.dylib *.pc *.a
-rm makefile
+rm -f makefile
 
 tree-sitter generate
 tree-sitter build

@@ -4,7 +4,7 @@
     "frames"
     "introFrames"
 ] @keyword
-(number) @number
+(integer) @number
 (framelist) @string
 (frameRepeat) @string
-(comment) @comment
+; (comment) @comment

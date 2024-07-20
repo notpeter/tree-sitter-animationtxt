@@ -27,7 +27,7 @@
           "named": true
         },
         {
-          "type": "number",
+          "type": "integer",
           "named": true
         }
       ]
@@ -72,7 +72,7 @@
       "required": true,
       "types": [
         {
-          "type": "number",
+          "type": "integer",
           "named": true
         }
       ]
@@ -118,15 +118,15 @@
     "named": false
   },
   {
+    "type": "integer",
+    "named": true
+  },
+  {
     "type": "introFrames",
     "named": false
   },
   {
     "type": "loopCount",
     "named": false
-  },
-  {
-    "type": "number",
-    "named": true
   }
 ]
