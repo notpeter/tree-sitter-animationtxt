@@ -1,0 +1,21 @@
+//https://zed.dev/docs/tasks
+[
+  {
+    "label": "tree-sitter-animationtxt: test",
+    "command": "tree-sitter",
+    "args": ["test"],
+    "use_new_terminal": false
+  },
+  {
+    "label": "tree-sitter-animationtxt: parse",
+    "command": "tree-sitter",
+    "args": ["parse", "${ZED_FILE}"],
+    "use_new_terminal": false
+  },
+  {
+    "label": "tree-sitter-animationtxt: highlight",
+    "command": "tree-sitter",
+    "args": ["highlight", "${ZED_FILE}"],
+    "use_new_terminal": false
+  }
+]
