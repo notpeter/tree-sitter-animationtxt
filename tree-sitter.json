@@ -1,0 +1,39 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "animationtxt",
+      "camelcase": "AnimationTXT",
+      "title": "Animation.txt",
+      "scope": "source.animationtxt",
+      "file-types": ["animation.txt"],
+      "injection-regex": "^animationtxt$",
+      "class-name": "TreeSitterAnimationtxt"
+    }
+  ],
+  "metadata": {
+    "version": "1.1.0",
+    "license": "MIT",
+    "description": "Panic Playdate Animation.txt files",
+    "authors": [
+      {
+        "name": "Peter Tripp",
+        "email": "petertripp@gmail.com",
+        "url": "https://github.com/notpeter"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/notpeter/tree-sitter-animationtxt",
+      "funding": "https://github.com/sponsors/notpeter/"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": false,
+    "node": true,
+    "python": false,
+    "rust": true,
+    "swift": false,
+    "zig": false
+  }
+}
